@@ -1,6 +1,6 @@
 import re
 
-from utils import AdventOfCodeSolver
+from src.utils import AdventOfCodeSolver
 
 
 class Day1Solver(AdventOfCodeSolver):
