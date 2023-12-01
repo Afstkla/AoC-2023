@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "aoc23"
+version = "0.1.0"
+description = ""
+authors = ["Job Nijenhuis <job@neople.io>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.2"
+pandas = "^2.1.3"
+
+
+[tool.poetry.group.test.dependencies]
+ruff = "^0.1.6"
+pyright = "^1.1.338"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
