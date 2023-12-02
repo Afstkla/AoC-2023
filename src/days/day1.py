@@ -8,18 +8,15 @@ class Day1Solver(AdventOfCodeSolver):
         super().__init__(1)
 
     def solve_first_part(self, input_txt: str) -> str:
-        sum = 0
+        solution = 0
 
         for line in input_txt.split("\n"):
-            if not line or len(line) == 0:
-                continue
-
             first_digit = re.sub(r"[^\d]*(\d).*", r"\1", line)
             last_digit = re.sub(r".*(\d)[^\d]*", r"\1", line)
 
-            sum += 10 * int(first_digit) + int(last_digit)
+            solution += 10 * int(first_digit) + int(last_digit)
 
-        return str(sum)
+        return str(solution)
 
     def solve_second_part(self, input_txt: str) -> str:
         return str(self.solve_first_part(self.words_to_digits(input_txt)))

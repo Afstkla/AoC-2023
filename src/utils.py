@@ -21,4 +21,4 @@ class AdventOfCodeSolver:
     def get_input(self, day: int) -> str:
         with open(f"inputs/input{day}.txt") as f:
             input_txt = f.read()
-        return input_txt
+        return input_txt.strip()
