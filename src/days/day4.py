@@ -39,8 +39,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"""
             total_matching = set(card["winning"]).intersection(set(card["ours"]))
 
             if len(total_matching) > 0:
-                extra_points = pow(2, len(total_matching) - 1)
-                total_sum += extra_points
+                total_sum += 1 << (len(total_matching) - 1)
 
         return str(total_sum)
 
