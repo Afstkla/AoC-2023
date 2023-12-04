@@ -8,8 +8,8 @@ Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1
 Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83
 Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"""
-    cards = []
-    copies = []
+    cards: list[int] = []
+    copies: list[int] = []
 
     def __init__(self):
         super().__init__(4)
@@ -22,12 +22,13 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"""
             line_without_card = line.split(": ")[1]
             (winning, ours) = line_without_card.split("|")
 
-            card = {
-                "winning": [
-                    int(x.strip()) for x in winning.split(" ") if x.strip() != ""
-                ],
-                "ours": [int(x.strip()) for x in ours.split(" ") if x.strip() != ""],
-            }
+            card = len(
+                {
+                    int(x.strip()) for x in (winning).split(" ") if x.strip() != ""
+                }.intersection(
+                    {int(x.strip()) for x in ours.split(" ") if x.strip() != ""}
+                )
+            )
 
             self.cards.append(card)
             self.copies.append(1)
@@ -36,16 +37,16 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"""
         total_sum = 0
 
         for card in self.cards:
-            total_matching = set(card["winning"]).intersection(set(card["ours"]))
+            total_matching = card
 
-            if len(total_matching) > 0:
-                total_sum += 1 << (len(total_matching) - 1)
+            if total_matching > 0:
+                total_sum += 1 << (total_matching - 1)
 
         return str(total_sum)
 
     def solve_second_part(self, input_txt: str) -> str:
         for idx, card in enumerate(self.cards):
-            count_matching = len(set(card["winning"]).intersection(set(card["ours"])))
+            count_matching = card
 
             for card_copies in range(count_matching):
                 self.copies[idx + card_copies + 1] += self.copies[idx]
