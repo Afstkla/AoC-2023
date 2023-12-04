@@ -1,0 +1,32 @@
+{
+    // Copilot
+    "github.copilot.enable": {
+        "*": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    // Python
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+        }
+    },
+    "python.languageServer": "Pylance",
+    "python.analysis.completeFunctionParens": true,
+    "python.terminal.activateEnvironment": true,
+    "ruff.lint.args": ["--config=${workspaceFolder}/ruff.toml"],
+    "ruff.format.args": ["--config=${workspaceFolder}/ruff.toml"],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.extraPaths": [
+        "./libs/database/src",
+        "./libs/schema/src",
+        "./libs/contact-center/src",
+        "./libs/analytics/src",
+        "./libs/communication-interface/src",
+        "./libs/messaging-platform/src"
+    ]
+}
